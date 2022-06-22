@@ -1,0 +1,22 @@
+DECLARE  
+   total_rows number(2); 
+BEGIN 
+   UPDATE customers 
+   SET salary = salary + 500; 
+   IF sql%notfound THEN 
+      dbms_output.put_line('no customers selected'); 
+   ELSIF sql%found THEN 
+      total_rows := sql%rowcount;
+      dbms_output.put_line( total_rows || ' customers selected '); 
+   END IF;  
+END; 
+
+create table customers (
+cname varchar2(20),
+cid varchar2(20),
+salary number(10)
+);
+
+insert into customers values('avi' , 'aa' , 2300 );
+insert into customers values('anu' , 'bb' , 3500 );
+select*from customers;
